@@ -1,0 +1,265 @@
+"site","year","used","prev","n","type","agegr","age","agspan","urban"
+"Francistown (%)",2012,TRUE,0.3435,4015,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2013,TRUE,0.3247,5152,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2014,TRUE,0.3059,5143,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2015,TRUE,0.2865,5277,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2016,TRUE,0.2758,5301,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2017,TRUE,0.2695,5402,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2018,TRUE,0.2639,5476,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2019,TRUE,0.266,5407,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2020,TRUE,0.2452,5575,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2021,TRUE,0.2428,5017,"ancrt","15-49",15,35,TRUE
+"Francistown (%)",2022,TRUE,0.2286,5039,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2012,TRUE,0.2321,6587,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2013,TRUE,0.226,6181,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2014,TRUE,0.2186,8892,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2015,TRUE,0.1974,10660,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2016,TRUE,0.17,11298,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2017,TRUE,0.1844,11760,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2018,TRUE,0.1829,11534,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2019,TRUE,0.1745,11706,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2020,TRUE,0.1722,12300,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2021,TRUE,0.1627,10609,"ancrt","15-49",15,35,TRUE
+"Gaborone (%)",2022,TRUE,0.15,10548,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2012,TRUE,0.2558,950,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2013,TRUE,0.2029,971,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2014,TRUE,0.2127,898,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2015,TRUE,0.2114,1050,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2016,TRUE,0.2589,950,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2017,TRUE,0.192,1099,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2018,TRUE,0.2144,1026,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2019,TRUE,0.1949,1011,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2020,TRUE,0.2106,997,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2021,TRUE,0.1628,854,"ancrt","15-49",15,35,TRUE
+"Jwaneng (%)",2022,TRUE,0.1521,861,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2012,TRUE,0.2355,5398,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2013,TRUE,0.2577,6088,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2014,TRUE,0.2422,3270,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2015,TRUE,0.2404,3095,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2016,TRUE,0.219,2941,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2017,TRUE,0.2436,2980,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2018,TRUE,0.2373,3350,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2019,TRUE,0.2104,3736,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2020,TRUE,0.2143,3575,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2021,TRUE,0.206,3457,"ancrt","15-49",15,35,TRUE
+"Kweneng East (%)",2022,TRUE,0.1833,3312,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2012,TRUE,0.2275,1266,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2013,TRUE,0.2477,1300,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2014,TRUE,0.2175,1163,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2015,TRUE,0.2287,1141,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2016,TRUE,0.2292,1108,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2017,TRUE,0.2155,1160,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2018,TRUE,0.223,1211,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2019,TRUE,0.175,1497,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2020,TRUE,0.2104,1131,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2021,TRUE,0.2102,1142,"ancrt","15-49",15,35,TRUE
+"Lobatse (%)",2022,TRUE,0.2178,1143,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2012,TRUE,0.2772,2435,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2013,TRUE,0.301,2754,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2014,TRUE,0.3039,2070,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2015,TRUE,0.2649,2593,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2016,TRUE,0.2443,2374,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2017,TRUE,0.2753,2488,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2018,TRUE,0.2555,3163,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2019,TRUE,0.2858,3055,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2020,TRUE,0.2709,3105,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2021,TRUE,0.2359,2683,"ancrt","15-49",15,35,TRUE
+"Mahalapye (%)",2022,TRUE,0.2121,2602,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2012,TRUE,0.3797,1712,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2013,TRUE,0.3389,1617,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2014,TRUE,0.3089,1599,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2015,TRUE,0.3063,1600,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2016,TRUE,0.3004,1528,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2017,TRUE,0.2757,1226,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2018,TRUE,0.2641,1227,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2019,TRUE,0.2507,1129,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2020,TRUE,0.2462,1109,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2021,TRUE,0.2516,962,"ancrt","15-49",15,35,TRUE
+"Selebi-Pikwe (%)",2022,TRUE,0.1942,973,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2012,TRUE,0.2021,4170,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2013,TRUE,0.3008,4133,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2014,TRUE,0.3039,4373,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2015,TRUE,0.2757,4168,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2016,TRUE,0.3056,4693,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2017,TRUE,0.3024,4885,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2018,TRUE,0.2592,4904,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2019,TRUE,0.2724,4790,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2020,TRUE,0.2491,5134,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2021,TRUE,0.2315,4328,"ancrt","15-49",15,35,TRUE
+"Serowe Palapye (%)",2022,TRUE,0.2187,4247,"ancrt","15-49",15,35,TRUE
+"South East (%)",2012,TRUE,0.282,2103,"ancrt","15-49",15,35,TRUE
+"South East (%)",2013,TRUE,0.2189,2586,"ancrt","15-49",15,35,TRUE
+"South East (%)",2014,TRUE,0.2012,2331,"ancrt","15-49",15,35,TRUE
+"South East (%)",2015,TRUE,0.1841,1966,"ancrt","15-49",15,35,TRUE
+"South East (%)",2016,TRUE,0.1652,1144,"ancrt","15-49",15,35,TRUE
+"South East (%)",2017,TRUE,0.1728,1186,"ancrt","15-49",15,35,TRUE
+"South East (%)",2018,TRUE,0.1808,1206,"ancrt","15-49",15,35,TRUE
+"South East (%)",2019,TRUE,0.1389,1152,"ancrt","15-49",15,35,TRUE
+"South East (%)",2020,TRUE,0.1762,1124,"ancrt","15-49",15,35,TRUE
+"South East (%)",2021,TRUE,0.1524,1155,"ancrt","15-49",15,35,TRUE
+"South East (%)",2022,TRUE,0.1448,1077,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2012,TRUE,0.2033,2292,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2013,TRUE,0.2693,2035,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2014,TRUE,0.2082,2229,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2015,TRUE,0.2269,1904,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2016,TRUE,0.2592,2164,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2017,TRUE,0.2177,2154,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2018,TRUE,0.2663,2322,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2019,TRUE,0.2144,2407,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2020,TRUE,0.1924,2386,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2021,TRUE,0.1998,2052,"ancrt","15-49",15,35,TRUE
+"Southern (%)",2022,TRUE,0.1789,2158,"ancrt","15-49",15,35,TRUE
+"Bobirwa district (%)",2012,TRUE,0.3599,1353,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2013,TRUE,0.3333,1461,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2014,TRUE,0.3164,1337,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2015,TRUE,0.2858,1669,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2016,TRUE,0.2729,1660,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2017,TRUE,0.2992,1681,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2018,TRUE,0.2999,1697,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2019,TRUE,0.2947,1805,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2020,TRUE,0.2842,1763,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2021,TRUE,0.2821,1464,"ancrt","15-49",15,35,FALSE
+"Bobirwa district (%)",2022,TRUE,0.2443,1371,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2012,TRUE,0.269,2238,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2013,TRUE,0.275,1800,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2014,TRUE,0.2581,2201,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2015,TRUE,0.2422,2349,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2016,TRUE,0.2255,2492,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2017,TRUE,0.2372,2664,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2018,TRUE,0.217,2548,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2019,TRUE,0.2238,2578,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2020,TRUE,0.2041,2543,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2021,TRUE,0.1762,2366,"ancrt","15-49",15,35,FALSE
+"Boteti (%)",2022,TRUE,0.176,2233,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2012,TRUE,0.3197,660,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2013,TRUE,0.3319,681,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2014,TRUE,0.3211,654,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2015,TRUE,0.2921,784,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2016,TRUE,0.2475,804,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2017,TRUE,0.2708,853,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2018,TRUE,0.274,814,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2019,TRUE,0.2778,853,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2020,TRUE,0.2571,945,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2021,TRUE,0.249,723,"ancrt","15-49",15,35,FALSE
+"Chobe (%)",2022,TRUE,0.2072,806,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2012,TRUE,0.1628,1579,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2013,TRUE,0.1744,1462,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2014,TRUE,0.1514,885,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2015,TRUE,0.176,1526,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2016,TRUE,0.1406,1522,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2017,TRUE,0.1542,1550,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2018,TRUE,0.1424,1531,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2019,TRUE,0.1344,1681,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2020,TRUE,0.1438,1704,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2021,TRUE,0.1465,1379,"ancrt","15-49",15,35,FALSE
+"Gantsi (%)",2022,TRUE,0.1221,1622,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2012,TRUE,0.2115,1092,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2013,TRUE,0.2371,1004,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2014,TRUE,0.235,868,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2015,TRUE,0.213,939,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2016,TRUE,0.1895,918,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2017,TRUE,0.2482,818,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2018,TRUE,0.2082,980,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2019,TRUE,0.1936,1002,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2020,TRUE,0.19,1084,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2021,TRUE,0.2029,907,"ancrt","15-49",15,35,FALSE
+"Goodhope (%)",2022,TRUE,0.1898,906,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2012,TRUE,0.2591,386,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2013,TRUE,0.2348,477,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2014,TRUE,0.1905,336,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2015,TRUE,0.1924,608,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2016,TRUE,0.1994,682,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2017,TRUE,0.1875,592,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2018,TRUE,0.1876,581,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2019,TRUE,0.1672,610,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2020,TRUE,0.1612,608,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2021,TRUE,0.1663,505,"ancrt","15-49",15,35,FALSE
+"Hukuntsi (%)",2022,TRUE,0.1434,509,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2012,TRUE,0.2554,736,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2013,TRUE,0.2358,475,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2014,TRUE,0.2129,742,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2015,TRUE,0.1746,733,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2016,TRUE,0.2037,702,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2017,TRUE,0.1936,873,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2018,TRUE,0.1878,836,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2019,TRUE,0.1427,890,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2020,TRUE,0.1765,1020,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2021,TRUE,0.135,822,"ancrt","15-49",15,35,FALSE
+"Kgalagadi (%)",2022,TRUE,0.1419,761,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2012,TRUE,0.2511,1967,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2013,TRUE,0.2618,1986,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2014,TRUE,0.2552,2132,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2015,TRUE,0.2525,1889,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2016,TRUE,0.2274,2005,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2017,TRUE,0.2497,2247,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2018,TRUE,0.2069,2344,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2019,TRUE,0.2119,2482,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2020,TRUE,0.2258,2733,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2021,TRUE,0.1941,2509,"ancrt","15-49",15,35,FALSE
+"Kgatleng (%)",2022,TRUE,0.1923,2668,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2012,TRUE,0.2705,1194,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2013,TRUE,0.2253,1518,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2014,TRUE,0.1953,1116,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2015,TRUE,0.1951,1102,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2016,TRUE,0.2065,1109,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2017,TRUE,0.2167,1357,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2018,TRUE,0.1889,1329,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2019,TRUE,0.194,1433,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2020,TRUE,0.1976,1427,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2021,TRUE,0.1539,1254,"ancrt","15-49",15,35,FALSE
+"Kweneng West (%)",2022,TRUE,0.1351,1177,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2012,TRUE,0.2421,347,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2013,TRUE,0.2461,386,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2014,TRUE,0.2492,333,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2015,TRUE,0.219,347,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2016,TRUE,0.2492,313,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2017,TRUE,0.2261,376,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2018,TRUE,0.2154,390,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2019,TRUE,0.2168,392,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2020,TRUE,0.1563,403,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2021,TRUE,0.1324,355,"ancrt","15-49",15,35,FALSE
+"Mabutsane (%)",2022,TRUE,0.1955,353,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2012,TRUE,0.2603,1041,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2013,TRUE,0.2666,3200,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2014,TRUE,0.2348,3493,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2015,TRUE,0.2794,1922,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2016,TRUE,0.2021,3102,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2017,TRUE,0.2248,3456,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2018,TRUE,0.202,3550,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2019,TRUE,0.2085,3678,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2020,TRUE,0.1942,3811,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2021,TRUE,0.1916,3173,"ancrt","15-49",15,35,FALSE
+"Ngami (%)",2022,TRUE,0.1816,3149,"ancrt","15-49",15,35,FALSE
+"North East (%)",2012,TRUE,0.3837,1079,"ancrt","15-49",15,35,FALSE
+"North East (%)",2013,TRUE,0.3629,722,"ancrt","15-49",15,35,FALSE
+"North East (%)",2014,TRUE,0.3371,789,"ancrt","15-49",15,35,FALSE
+"North East (%)",2015,TRUE,0.3207,817,"ancrt","15-49",15,35,FALSE
+"North East (%)",2016,TRUE,0.3079,825,"ancrt","15-49",15,35,FALSE
+"North East (%)",2017,TRUE,0.3405,837,"ancrt","15-49",15,35,FALSE
+"North East (%)",2018,TRUE,0.2898,866,"ancrt","15-49",15,35,FALSE
+"North East (%)",2019,TRUE,0.2693,802,"ancrt","15-49",15,35,FALSE
+"North East (%)",2020,TRUE,0.2709,753,"ancrt","15-49",15,35,FALSE
+"North East (%)",2021,TRUE,0.2928,683,"ancrt","15-49",15,35,FALSE
+"North East (%)",2022,TRUE,0.2693,713,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2012,TRUE,0.2685,1393,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2013,TRUE,0.2351,1442,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2014,TRUE,0.2432,1258,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2015,TRUE,0.2264,1612,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2016,TRUE,0.1977,1598,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2017,TRUE,0.22,1688,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2018,TRUE,0.2289,1979,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2019,TRUE,0.2099,2225,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2020,TRUE,0.2057,2105,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2021,TRUE,0.2029,2006,"ancrt","15-49",15,35,FALSE
+"Okavango (%)",2022,TRUE,0.159,1704,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2012,TRUE,0.3685,1297,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2013,TRUE,0.3503,1299,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2014,TRUE,0.2977,1414,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2015,TRUE,0.2669,2488,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2016,TRUE,0.331,1994,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2017,TRUE,0.3081,1996,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2018,TRUE,0.3333,2054,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2019,TRUE,0.2763,2302,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2020,TRUE,0.2771,2270,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2021,TRUE,0.2617,1945,"ancrt","15-49",15,35,FALSE
+"Tutume (%)",2022,TRUE,0.2375,1949,"ancrt","15-49",15,35,FALSE
