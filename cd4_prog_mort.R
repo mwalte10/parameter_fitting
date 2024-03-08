@@ -26,7 +26,7 @@ prep_spectrum_data <- function(pjnz = paste0(root, '/spectrum_data/Benin_2023_02
   return(list(cd4_mort = cd4_mort, dist = dist, cd4_prog = cd4_prog, cd4_transition = cd4_transition))
 }
 
-prep_output_structure <- function(ts_in = 30/365, years_out = 30, seed_inf = 1000){
+prep_output_structure <- function(ts_in = 30/365, years_out = 15, seed_inf = 1000){
   hivstrat_paeds_out <- array(0, dim = c(7, 4, 15, 2, (years_out  * (1/ts_in))))
   hivstrat_paeds_out[,1,1,1:2,1] <- seed_inf * dist
   hivstrat_paeds_out[,2:3,1,1:2,1] <- seed_inf * dist
@@ -143,12 +143,13 @@ new_hivpop <- function(hivstrat_paeds, cd4_mort, cd4_prog,  cd4_transition, ts){
 
 }
 
-get_pct_surviving <- function(ts_in, years_out, seed_inf = 1000){
-  input <- prep_spectrum_data()
-  dist <- input$dist
-  cd4_mort <- input$cd4_mort
-  cd4_prog <- input$cd4_prog
-  cd4_transition <- input$cd4_transition
+get_pct_surviving <- function(ts_in, years_out, seed_inf = 1000, input, input_dist, input_transition){
+
+  dist <- input_dist
+  cd4_mort <- array(unlist(input)[grep('cd4_mort', names(unlist(input)))], dim = c(7,4,15))
+  cd4_prog <- array(unlist(input)[grep('cd4_prog', names(unlist(input)))], dim = c(7,15))
+  cd4_transition <- input_transition
+
   hivstrat_paeds_out <- prep_output_structure()
 
   end_sim <- (years_out  * (1/ts_in)) - 1
@@ -168,19 +169,69 @@ get_pct_surviving <- function(ts_in, years_out, seed_inf = 1000){
   return(out)
 }
 
-ts_in <- 30/365
-years_out <- 30
-seed_inf = 1000
+# ts_in <- 30/365
+# years_out <- 15
+# seed_inf = 1000
+# input <- prep_spectrum_data()
+#
+# out <- get_pct_surviving(ts_in = ts_in, years_out = years_out, seed_inf = seed_inf, input = unlist(input[c('cd4_prog', 'cd4_mort')]),
+#                          input_dist = input$dist, input_transition = input$cd4_transition)
+#
+# #dev.new(width = 7.5, height = 5,noRStudioGD = T)
+# dir.create(paste0(root, '/plots'))
+# png(filename = 'plots/surv plot.png', width = 7.5, height = 5, units = 'in', res = 300)
+# ggplot(out[ts < 25], aes(ts , pct_surviving, col = as.factor(infection_type))) + geom_line(lwd = 2) +
+#   scale_x_continuous(breaks = c(0,1,3,6,12,24), labels = c(0, 1, 3, 6, 12, 24)) +
+#   labs(x = 'Months since infection', y = 'Percent surviving', col = 'Infection type') +
+#   theme_bw(base_size = 12) +
+#   theme(
+#     strip.text.x = element_text(size = rel(1)), axis.ticks.y= element_blank())
+# dev.off()
 
-out <- get_pct_surviving(ts_in = ts_in, years_out = years_out, seed_inf = seed_inf)
+optimization_function <- function(par = c(err, input), dt = surv, input_dist, input_transition){
+  err <- par[1]
+  input <- par[2:length(par)]
+  out <- get_pct_surviving(ts_in = 30/365, years_out = 15, seed_inf = 1000, input = input, input_dist, input_transition)
 
-dev.new(width = 7.5, height = 5,noRStudioGD = T)
-dir.create(paste0(root, '/plots'))
-png(filename = 'plots/surv plot.png', width = 7.5, height = 5, units = 'in', res = 300)
-ggplot(out[ts < 25], aes(ts , pct_surviving, col = as.factor(infection_type))) + geom_line(lwd = 2) +
-  scale_x_continuous(breaks = c(0,1,3,6,12,24), labels = c(0, 1, 3, 6, 12, 24)) +
-  labs(x = 'Months since infection', y = 'Percent surviving', col = 'Infection type') +
-  theme_bw(base_size = 12) +
-  theme(
-    strip.text.x = element_text(size = rel(1)), axis.ticks.y= element_blank())
-dev.off()
+  likelihoods <- dnorm(dt[type == 'Perinatal',surv], mean = out[infection_type == 'Perinatal',pct_surviving], sd = err)
+
+  log.likelihoods <- log(likelihoods)
+  #
+  deviance <- -2 * sum(log.likelihoods)
+
+  return(deviance)
+
+}
+
+surv <- qs::qread(paste0(root, '/survival_curves.qs'))
+input <- prep_spectrum_data()
+par_good <- c(err = 0.1, unlist(input[c('cd4_prog', 'cd4_mort')]))
+
+opt_diffstep=1e-3
+
+###I cant get this to converge
+start <- Sys.time()
+parameter.fits <- optim(par = par_good, fn = optimization_function, hessian = F, dt = surv,
+                        #trace is the level of reporting
+                        control=list(trace=4,
+                                     #negative value turns it to a maximation problem
+                                     fnscale = -1,
+                        #maxit is the maximum number of iterations, have this really low rn to finish faster for testing
+                                    # maxit = 1,
+                        #frequency of reports
+                        REPORT = 1), method="BFGS", input_dist = input$dist,
+                        input_transition = input$cd4_transition)
+end <- Sys.time()
+
+
+##Fitting to modelled output and not data, so there isn't a model fit in the statistical sense
+##this fit is dependent on what point on these are choosing
+##lots of combos that could give this survival curve
+##start to fit just a couple parameters rather than all of them
+##constrain the parameters a bit more (rate parameters between zero and one)
+##statistical inference: uncertainty in the parameter conditional on the data
+
+##ideally would be fit to the same data used to make these survival curves
+  ## if we had the uncertainty in the parameters that are fit to this data we could try to infer
+  ## Could fit to the hazard function rather than the survival function -> this would reduce the dependence on earlier
+

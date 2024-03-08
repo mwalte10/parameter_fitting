@@ -11,83 +11,83 @@ pop_1 <- paste0(root, '/spectrum_data/Botswana2023v4 WPP 02_03_2023 KOS_pop1.xls
 birth_data <- fread(paste0(root, '/spectrum_data/birth_draws_laf1.csv'))
 ancsitedat <- fread(paste0(root, '/spectrum_data/ancrt_data.csv'))
 
+ancsitedat <- ancsitedat[type == 'ancrt']
+ancsitedat <- ancsitedat[,.(prev, w.prev = weighted.mean(prev, n), n), by = c('year')]
+ancsitedat[,diff := (prev - w.prev)^2]
+ancsitedat[,diff := sum(diff), by = 'year']
+ancsitedat <- ancsitedat[,.(w.prev, n = sum(n)), by = c('year')]
+ancsitedat[,var := w.prev / (n-1)]
+ancsitedat <- unique(ancsitedat)
+dt <- merge(birth_data[year %in% ancsitedat$year], unique(ancsitedat), by = c('year'), allow.cartesian = T)
 
-dt <- merge(birth_data[year %in% ancsitedat$year], ancsitedat, by = c('year'), allow.cartesian = T)
-dt <- dt[type == 'ancrt']
+logitTransform <- function(p) { log(p/(1-p)) }
+invlogitTransform <- function(p) { exp(p) / (1+exp(p)) }
 
-##Need to figure out where the err.sigma is coming from
-####That's the part that I don't uncertand in Jeff's code where its the variance of the probit transformed prevalence
-lm.loss <- function(par, true_prev, est.prev){
+
+# dt[,offset_ancrt := (prev*n+0.5)/(n+1)]
+# dt[,W.ancrt := qnorm(offset_ancrt)]
+# dt[,v.ancrt := 2*pi*exp(W.ancrt^2)*offset_ancrt*(1-offset_ancrt)/n]
+# dt[,W.prev_est := qnorm(prev_est)]
+
+lm.loss <- function(par, dt, draw.x){
   laf.par <- par[1]
   err.laf <- par[2]
+  prev <- dt[draw == draw.x,w.prev]
+  prev_est <- dt[draw == draw.x,prev_est]
+  v.ancrt <- dt[draw == draw.x,var]
 
-  ##I think that this sd also need to include variance from true_prev and est.prev, just not sure how to combine all of those
-  likelihoods <- dnorm(true_prev, mean = est.prev * laf.par, sd = err.laf)
-#
-  log.likelihoods <- log(likelihoods)
-#
-  deviance <- -2 * sum(log.likelihoods)
+  likelihoods <- dnorm(log(prev), mean = log(prev_est) + laf.par, sd = sqrt(err.laf + v.ancrt), log = T)
+  deviance <- -2 * sum(likelihoods)
 
   return(deviance)
 }
 
-par_bad <- c( laf = 8, err.laf = 3)
-par_good <- c( laf = 1, err.laf = 0.2)
-par_true <- c( laf =  1.29153691, err.laf = 0.05316214)
 
-lm.loss(par_bad, true_prev = dt$prev, est.prev = dt$prev_est)
-lm.loss(par_good, true_prev = dt$prev, est.prev = dt$prev_est)
-lm.loss(par_true, true_prev = dt$prev, est.prev = dt$prev_est)
+##this needs to be run separately for each draw
+fits <- list()
+for(i in 1:300){
+  parameter.fits <- optim(par = c(laf = 1, err.laf = 0.05), fn = lm.loss, hessian = F, dt = dt, draw.x = i)
+  hessian <- numDeriv::hessian(lm.loss, parameter.fits$par, dt = dt[draw == i,], draw.x = i)
+  hessian.inv <- solve(hessian)
+  parameter.se <- sqrt(diag(hessian.inv))
+  out <- data.table(ml = parameter.fits$par,
+                    se = parameter.se,
+                    var = c('laf', 'err'),
+                    draw = i)
+  fits[[i]] <- out
+  print(i / 300)
+}
 
-parameter.fits <- optim(par = par_good, fn = lm.loss, hessian = T, true_prev = dt$prev, est.prev = dt$prev_est)
-hessian <- parameter.fits$hessian
-hessian.inv <- solve(hessian)
-parameter.se <- sqrt(diag(hessian.inv))
+fits <- rbindlist(fits)
+fits <- melt(fits, id.vars = c('var', 'draw'))
+fits <- dcast(fits, draw + variable ~ var, value.var = 'value')
 
-parameter.se
-out <- data.table(ml = parameter.fits$par,
-                  lb = parameter.fits$par - 1.96 * parameter.se,
-                  ub = parameter.fits$par + 1.96 * parameter.se,
-                  se = parameter.se)
+birth_data <- merge(birth_data, fits[variable == 'ml'], by = 'draw', allow.cartesian = T)
+birth_data[,prev_est_new := prev_est * exp(laf)]
+birth_data[,median := median(prev_est_new), by = 'year']
+birth_data[,lower := quantile(prev_est_new, 0.025), by = 'year']
+birth_data[,upper := quantile(prev_est_new, 0.975), by = 'year']
 
-
-rownames(out) <- c('LAF', 'Standard deviation of errors')
-
-##Is the posterior distribution just the rnorm with the new mean and sd?
-posterior_laf <- data.table(laf = rnorm(300, out$ml[1], sd = out$se[1]), draw = 1:300)
-birth_data <- merge(birth_data, posterior_laf, by = 'draw')
-birth_data[,prev_median := median(prev_est), by = 'year']
-birth_data[,prev_est_new := prev_median * laf]
-birth_data[,upper_og := quantile(prev_est, 0.975), by = 'year']
-# birth_data[,upper_new := quantile(prev_est_new, 0.975), by = 'year']
-birth_data[,upper_new := prev_est_new + 1.96 * 7.433817e-04, by = 'year']
-birth_data[,lower_og := quantile(prev_est, 0.025), by = 'year']
-birth_data[,lower_new := prev_est_new -  1.96 * 7.433817e-04, by = 'year']
-# birth_data[,lower_new := quantile(prev_est_new , 0.025), by = 'year']
-
-birth_data <- unique(birth_data[,.(prev_est = median(prev_est), upper_og, upper_new, lower_og, lower_new, prev_est_new = median(prev_est_new)), by = 'year'])
-birth_data <- rbind(birth_data[,.(year, prev = prev_est, upper = upper_og, lower = lower_og, run = 'LAF = 1')],
-                    birth_data[,.(year, prev = prev_est_new, upper = upper_new, lower = lower_new, run = 'LAF = 1.29')])
+fits_mean <- fits[,.(err = median(err)), by = c('variable')]
 
 spec_birth_data <- fread(paste0(root, '/spectrum_data/birth_draws_laf_calibrated.csv'))
 spec_birth_data <- unique(spec_birth_data[,.(prev = median(prev_est), lower = quantile(prev_est, 0.025), upper = quantile(prev_est, 0.975), run = 'Current Spectrum'), by  = 'year'])
+birth_data <- unique(birth_data[,.(year, prev = median, lower, upper, run = 'LAF fit 1.28')])
 birth_data <- rbind(birth_data, spec_birth_data)
-
-mean <- ancsitedat[type == 'ancrt']
-mean <- mean[,.(prev = weighted.mean(prev,n), n), by = 'year']
-mean <- mean[,.(prev, n = sum(n)), by = 'year']
-mean <- unique(mean)
+mean <- unique(ancsitedat)
+mean <- mean[,err := fits_mean[variable == 'ml',err]]
+mean <- mean[,.(year, w.prev, lower = w.prev - 1.96 * sqrt(var + err), upper =  w.prev + 1.96 * sqrt(var + err))]
 
 dev.new(width = 7.5, height = 5,noRStudioGD = T)
 dir.create(paste0(root, '/plots'))
 png(filename = 'plots/LAF plot.png', width = 7.5, height = 5, units = 'in', res = 300)
 ggplot() + geom_line(data = birth_data[year > 1999 & year < 2026], aes(year, prev, col = as.factor(run))) +
   geom_ribbon(data = birth_data[year > 1999 & year < 2026], aes(x = year, ymin = lower, ymax = upper, fill = as.factor(run)), alpha = 0.2) +
-  geom_point(data = ancsitedat[type == 'ancrt'], aes(year, prev, size = n), alpha = 0.5) +
-  geom_point(data = mean, aes(year, prev, size = n), col = 'red', shape = 17, show.legend = F) +
-  labs(size = 'Women tested at ANC-RT site',
+  geom_point(data = mean, aes(year, w.prev),  shape = 17, show.legend = F) +
+ # geom_errorbar(data = mean, aes(year, ymin = lower, ymax = upper), ) +
+   labs(size = 'Women tested at ANC-RT site',
        fill = 'LAF', color = 'LAF', x = NULL, y = 'HIV prevalence among pregnant women',
-       caption = 'Red triangles are national HIV prevalence')  + theme_bw(base_size = 11) +
+       caption = 'Triangles are national HIV prevalence')  + theme_bw(base_size = 11) +
   theme(
          strip.text.x = element_text(size = rel(0.8)),
          axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1.1),
