@@ -10,6 +10,7 @@ pjnz <- paste0(root, '/spectrum_data/Botswana2023v4 WPP 02_03_2023 KOS.PJNZ')
 pop_1 <- paste0(root, '/spectrum_data/Botswana2023v4 WPP 02_03_2023 KOS_pop1.xlsx')
 birth_data <- fread(paste0(root, '/spectrum_data/birth_draws_laf1.csv'))
 ancsitedat <- fread(paste0(root, '/spectrum_data/ancrt_data.csv'))
+source('laf_functions.R')
 
 ancsitedat <- ancsitedat[type == 'ancrt']
 ancsitedat <- ancsitedat[,.(prev, w.prev = weighted.mean(prev, n), n), by = c('year')]
@@ -20,23 +21,19 @@ ancsitedat[,var := w.prev / (n-1)]
 ancsitedat <- unique(ancsitedat)
 dt <- merge(birth_data[year %in% ancsitedat$year], unique(ancsitedat), by = c('year'), allow.cartesian = T)
 
-logitTransform <- function(p) { log(p/(1-p)) }
-invlogitTransform <- function(p) { exp(p) / (1+exp(p)) }
 
-
-# dt[,offset_ancrt := (prev*n+0.5)/(n+1)]
-# dt[,W.ancrt := qnorm(offset_ancrt)]
-# dt[,v.ancrt := 2*pi*exp(W.ancrt^2)*offset_ancrt*(1-offset_ancrt)/n]
-# dt[,W.prev_est := qnorm(prev_est)]
-
-lm.loss <- function(par, dt, draw.x){
+lm.loss <- function(par, dt, draw.x, pjnz){
   laf.par <- par[1]
   err.laf <- par[2]
+
+  spec = eppasm::read_hivproj_output(pjnz)
   prev <- dt[draw == draw.x,w.prev]
-  prev_est <- dt[draw == draw.x,prev_est]
+  idx <- dt[draw == draw.x,year]
+  idx <- which(1970:2030 %in% idx)
+  prev_est <- calc_hiv_births(year.idx = idx, draw = draw.x, laf.par, spec)
   v.ancrt <- dt[draw == draw.x,var]
 
-  likelihoods <- dnorm(log(prev), mean = log(prev_est) + laf.par, sd = sqrt(err.laf + v.ancrt), log = T)
+  likelihoods <- dnorm(log(prev), mean = log(prev_est), sd = sqrt(err.laf + v.ancrt), log = T)
   deviance <- -2 * sum(likelihoods)
 
   return(deviance)
@@ -46,7 +43,7 @@ lm.loss <- function(par, dt, draw.x){
 ##this needs to be run separately for each draw
 fits <- list()
 for(i in 1:300){
-  parameter.fits <- optim(par = c(laf = 1, err.laf = 0.05), fn = lm.loss, hessian = F, dt = dt, draw.x = i)
+  parameter.fits <- optim(par = c(laf = 1, err.laf = 0.05), fn = lm.loss, hessian = F, dt = dt, draw.x = i, pjnz = pjnz)
   hessian <- numDeriv::hessian(lm.loss, parameter.fits$par, dt = dt[draw == i,], draw.x = i)
   hessian.inv <- solve(hessian)
   parameter.se <- sqrt(diag(hessian.inv))
