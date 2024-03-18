@@ -15,16 +15,22 @@ cd4_mortality_model <- function(dt, par){
   b2 <- par[['mort2']] ##y intercept (0-1)
   b3 <- par[['mort3']] ##growth coefficient
   b4 <- par[['mort4']]
+  b5 <- par[['mort5']]
+  b6 <- par[['mort6']]
+
   # err <- par[['err']]
-  cd4_vec = 1:7
-  mean = b3 * (b4-1) / (1 + exp((-b1*(b4-1))))  + b2 * af
-  sd = sd(b3 * (cd4_vec-1) / (1 + exp((-b1*(cd4_vec-1))))  + b2 * af)
-  mean = 0
-  sd = 1
 
-  #mort = pnorm(b3 * (cd4-1) / (1 + exp((-b1*(cd4-1)))) + b2, mean = mean, sd = sd)
-  mort = pnorm(b3 * (cd4-1) / (1 + exp((-b1*(cd4-1)))) + b2 * af, mean = mean, sd = sd)
+  if(af < 4){
+    inf = b2 * b6
+  }
+  if(af %in% 5:6){
+    int = b4 * b6
+  }
+  if(af > 6){
+    int = b5 * b6
+  }
 
+  mort = pnorm(b3 * (cd4-1) / (1 + exp((-b1*(cd4-1)))) + int * af)
 
 
   return(mort)
@@ -33,13 +39,13 @@ cd4_mortality_model <- function(dt, par){
 get_dt_mort <- function(dt,  par_vec){
   results <- apply(dt, 1, cd4_mortality_model, par = par_vec)
   dt[,mort := results]
-  dt[,mort := ifelse(cd4 ==7 & af > 5, 0, mort)]
+  #dt[,mort := ifelse(cd4 ==7 & af > 5, 0, mort)]
   dt <- dt[,.(cd4, tt, af, mort)]
   return(dt)
 }
 
-fill_cd4_mort <- function(dt){
-  cd4_mort_new <- array(0, dim = c(7,4,15))
+fill_cd4_mort <- function(dt, hDS){
+  cd4_mort_new <- array(0, dim = c(hDS,4,15))
   for(af.x in 1:15){
     for(tt.x in 1:4){
       cd4_mort_new[,tt.x,af.x] <- dt[af == af.x & tt == tt.x,mort]
@@ -62,8 +68,8 @@ fill_cd4_mort <- function(dt){
   return(cd4_mort_new)
 }
 
-new_cd4_mort <- function(dt, par_vec){
+new_cd4_mort <- function(dt, par_vec, struct_pars){
   dt <- get_dt_mort(dt, par_vec)
-  cd4_mort <- fill_cd4_mort(dt)
+  cd4_mort <- fill_cd4_mort(dt, hDS = struct_pars$hDS)
   return(cd4_mort)
 }
