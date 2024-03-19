@@ -16,13 +16,7 @@ prep_output_structure <- function(struct_pars, dist){
   type = struct_pars$type
 
   hivstrat_paeds_out <- array(0, dim = c(hDS, 4, (years_out  * (1/ts_in))))
-  if(type == 'peri'){
     hivstrat_paeds_out[,1,1] <- seed_inf * dist
-  }else if(type == 'bf'){
-    hivstrat_paeds_out[,2,3] <- seed_inf * dist
-    # hivstrat_paeds_out[,3,8] <- seed_inf * dist
-    # hivstrat_paeds_out[,4,((1/ts_in) + 1)] <- seed_inf * dist
-  }
 
 
   return(hivstrat_paeds_out)
@@ -171,14 +165,8 @@ get_pct_surviving <- function(ts_in, years_out, seed_inf = 1000, input, par_vec,
   dt <- data.table(melt(hivstrat_paeds_out))
   dt <- dt[,.(cd4 = Var1, total = sum(value), value), by = c('Var2', 'Var3')]
   dt[,age := Var3 * ts_in]
-  if(type == 'peri'){
-    dt <- dt[Var2 == 1,.(age, value, total, cd4)]
-  }else if(type == 'bf'){
-    dt <- dt[Var2 != 1,]
-    dt <-  dt[,.(value = sum(value)), by = c('Var3', 'cd4', 'age')]
-    dt <- dt[,.(cd4, total = sum(value), value), by = c('Var3')]
-    dt <- unique(dt)
-  }
+  dt <- dt[Var2 == 1,.(age, value, total, cd4)]
+
 
   out <- data.table(melt(hivstrat_paeds_out))
   out[,age := Var3 * ts_in]

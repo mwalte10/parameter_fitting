@@ -28,10 +28,9 @@ lapply(list.files(paste0(root, '/central_functions/natural_history/'),full.names
 #     strip.text.x = element_text(size = rel(1)), axis.ticks.y= element_blank())
 # dev.off()
 
-optimization_function <- function(par = par_vec, dt = surv, input, flags = c(cd4_mort =  T, cd4_prog = T, cd4_dist = T), struct_pars, type = 'bf'){
+optimization_function <- function(par = par_vec, dt = surv, input, flags = c(cd4_mort =  T, cd4_prog = T, cd4_dist = T), struct_pars){
   ts_in = struct_pars$ts_in
   years_out = struct_pars$years_out
-  type = struct_pars$type
 
   err <- par[length(par)]
   pars <- par#[c(1:3)]
@@ -39,7 +38,6 @@ optimization_function <- function(par = par_vec, dt = surv, input, flags = c(cd4
   cd4_mort_flag = flags['cd4_mort']
   cd4_prog_flag = flags['cd4_prog']
   cd4_dist_flag = flags['cd4_dist']
-
 
   out <- get_pct_surviving(ts_in = 30/365, years_out = years_out, seed_inf = 1000, input = input, par_vec = pars,
                            cd4_mort_flag, cd4_prog_flag, cd4_dist_flag, struct_pars)
@@ -50,17 +48,11 @@ optimization_function <- function(par = par_vec, dt = surv, input, flags = c(cd4
   out[,month := 1:nrow(out)]
   out[,hr := -log10(pct_surviving) / (month)]
 
-  if(type == 'peri'){
     #likelihoods.peri <- dnorm(dt[type == 'Perinatal',surv], mean = out[infection_type == 'Perinatal',pct_surviving], sd = exp(err))
     likelihoods.peri <- dnorm(dt[type == 'Perinatal',hr], mean = out[infection_type == 'Perinatal',hr], sd = exp(err))
     log.likelihoods.peri <- log(likelihoods.peri)
     deviance <- -2 * (sum(log.likelihoods.peri))
 
-  }else if(type == 'bf'){
-    likelihoods.bf <- dnorm(dt[type == 'BF',hr], mean = out[infection_type == 'BF' & !is.infinite(hr),hr], sd = exp(err))
-    log.likelihoods.bf <- log(likelihoods.bf)
-    deviance <- -2 * (sum(log.likelihoods.bf))
-  }
 
   return(deviance)
 
@@ -70,7 +62,7 @@ surv <- qs::qread(paste0(root, '/survival_curves.qs'))
 surv <- surv[month != max(month),]
 #prep_spectrum_data() ## located in the 00_prep_data file
 input <- qs::qread(paste0(root, '/input.qs'))
-pars <- c('mort1', 'mort2', 'mort3', 'mort4',
+pars <- c('mort1', 'mort2', 'mort3', 'mort4', 'mort5', 'mort6',
           'prog1', 'prog2', 'prog3',
           'dist1',
           'b4', 'err','err_total')
@@ -81,11 +73,9 @@ par_vec['mort2'] = -0.75
 par_vec['mort3'] = 0.3
 par_vec['mort4'] = 4.5
 par_vec['dist1'] = 1
-flags = c(cd4_mort =  T, cd4_prog = T, cd4_dist = T)
-struct_pars <- list(ts_in = 30/365, years_out = 15, seed_inf = 1000, hDS = 7, type = 'bf')
-if(struct_pars$type == 'bf'){
-  par_vec['mort2'] = -1.036433
-}
+flags = c(cd4_mort =  T, cd4_prog = T, cd4_dist = F)
+struct_pars <- list(ts_in = 30/365, years_out = 15, seed_inf = 1000, hDS = 7)
+
 parameter.fits <- optim(par = par_vec, fn = optimization_function, hessian = F, dt = surv, input = input,  flags = flags,
                         struct_pars = struct_pars,
                         #trace is the level of reporting
@@ -127,7 +117,7 @@ surv[,age := NULL]
 setnames(surv, c('pct_surviving','surv'), c('Spectrum- fit parameters', 'Survival curves'))
 surv <- melt(surv, id.vars = c('type', 'month'))
 surv$type <- factor(surv$type, levels = c('Perinatal', 'BF'))
-ggplot(surv, aes(month, value, col = as.factor(variable))) + facet_wrap(~type) +
+ggplot(surv[type == 'Perinatal'], aes(month, value, col = as.factor(variable))) + facet_wrap(~type) +
   geom_line() + ylim(0,1)
 
 dt <- data.table(expand.grid(list(af = 1:15,

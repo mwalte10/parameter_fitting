@@ -20,17 +20,7 @@ cd4_mortality_model <- function(dt, par){
 
   # err <- par[['err']]
 
-  if(af < 4){
-    inf = b2 * b6
-  }
-  if(af %in% 5:6){
-    int = b4 * b6
-  }
-  if(af > 6){
-    int = b5 * b6
-  }
-
-  mort = pnorm(b3 * (cd4-1) / (1 + exp((-b1*(cd4-1)))) + int * af)
+  mort = pnorm(b3 * (cd4-1) / (1 + exp((-b1*(cd4-1)))) + b2 * af, mean = 0, sd = 1)
 
 
   return(mort)
